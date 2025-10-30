@@ -241,7 +241,3 @@ while True:
     else:
         print("❌ Invalid choice. Please try again.")
 print("Thanks for using our program!!")
-
-#This is the first change
-
-#This is the second change
