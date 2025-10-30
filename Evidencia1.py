@@ -66,7 +66,6 @@ def apply_popart_filter(img):
     # Filtro estilo pop-art con 4 combinaciones de color
 
     # --- 1. Cargar la imagen ---
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img_resize = cv2.resize(img, (400, 400))  # tamaño uniforme
 
     # --- 2. Convertir a escala de grises ---
@@ -146,8 +145,8 @@ def apply_warm_filter(img):
     warm = img.astype(np.float32)
 
     # En BGR: canal 0 = azul, canal 2 = rojo
-    warm[:,:,0] = np.clip(warm[:,:,0] * 0.9, 0, 255)   # Azul ↓
-    warm[:,:,2] = np.clip(warm[:,:,2] * 1.2, 0, 255)   # Rojo ↑
+    warm[:,:,0] = np.clip(warm[:,:,0] * 0.9, 0, 255)   # Bajar Azul
+    warm[:,:,2] = np.clip(warm[:,:,2] * 1.2, 0, 255)   # Subir Rojo
 
     warm = warm.astype(np.uint8)
 
@@ -204,16 +203,6 @@ def apply_drawing_filter(img):
     plt.title("Filtro Sketch ✏️ (Dibujo a lápiz)")
     plt.axis("off")
     plt.show()
-
-    # --- 9️⃣ (Opcional) Comparar con la imagen original ---
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-
-    plt.imshow(sketch, cmap='gray')
-    plt.title("Sketch ✏️")
-    plt.axis("off")
-    plt.show()
-    save_img(sketch)
 
 
 # Pedir al usuario la ruta de la imagen
